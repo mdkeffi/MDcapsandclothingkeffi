@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Caps - Measurements</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.main-container {
+  margin-top: 80px;
+  padding: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.measurement-container {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 20px;
+  padding: 2rem;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.8);
+  color: #f8fafc;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(34, 197, 94, 0.3);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.popup h3 {
+  color: #22c55e;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.popup-btn {
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.yes-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.no-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-container {
+    padding: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-ruler"></i> Measurements
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-container">
+  <div class="page-header">
+    <h1 class="page-title"><i class="fas fa-ruler-combined"></i> Measurements</h1>
+    <p style="color: #cbd5e1;">Please provide your measurements for the perfect fit</p>
+  </div>
+
+  <div class="measurement-container">
+    <form id="measurementForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="shirt">Shirt (inches)</label>
+          <input type="text" id="shirt" placeholder="e.g. 16" required>
+        </div>
+        <div class="form-group">
+          <label for="trouser">Trouser (inches)</label>
+          <input type="text" id="trouser" placeholder="e.g. 34" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="hand">Hand (inches)</label>
+          <input type="text" id="hand" placeholder="e.g. 24" required>
+        </div>
+        <div class="form-group">
+          <label for="neck">Neck (inches)</label>
+          <input type="text" id="neck" placeholder="e.g. 15" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="shoulder">Shoulder (inches)</label>
+        <input type="text" id="shoulder" placeholder="e.g. 18" required>
+      </div>
+
+      <div class="form-group">
+        <label for="fabricColor">Fabric Color (or same as selected style)</label>
+        <input type="text" id="fabricColor" placeholder="e.g. Blue, Red, or Same as shown">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description (optional)</label>
+        <textarea id="description" rows="4" placeholder="Any special instructions or preferences..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> Submit Order
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Success Popup -->
+<div id="successPopup" class="popup">
+  <div class="popup-content">
+    <h3><i class="fas fa-check-circle"></i> Order Successful!</h3>
+    <p>Your order has been submitted successfully. We will contact you soon!</p>
+    <p>Return to home page?</p>
+    <button class="popup-btn yes-btn" onclick="goHome()">
+      <i class="fas fa-home"></i> Yes, Go Home
+    </button>
+    <button class="popup-btn no-btn" onclick="closePopup()">
+      <i class="fas fa-times"></i> Stay Here
+    </button>
+  </div>
+</div>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/2348149608006" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const SHEETDB_ENDPOINT = "https://sheetdb.io/api/v1/tl4p36fvtpr2f";
+
+// Handle form submission
+document.getElementById('measurementForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const measurementData = {
+    shirt: document.getElementById('shirt').value,
+    trouser: document.getElementById('trouser').value,
+    hand: document.getElementById('hand').value,
+    neck: document.getElementById('neck').value,
+    shoulder: document.getElementById('shoulder').value,
+    fabricColor: document.getElementById('fabricColor').value || 'Same as selected style',
+    description: document.getElementById('description').value || 'No special instructions'
+  };
+  
+  // Get previous order data
+  const paymentData = JSON.parse(localStorage.getItem('paymentData') || '{}');
+  const customerInfo = JSON.parse(localStorage.getItem('customerInfo') || '{}');
+  
+  // Combine all data for final submission
+  const finalOrderData = {
+    event_type: 'order_completed',
+    ...paymentData,
+    ...customerInfo,
+    ...measurementData,
+    order_status: 'completed',
+    completed_timestamp: new Date().toISOString()
+  };
+  
+  // Send to Google Sheets
+  sendToSheets(finalOrderData);
+  
+  // Store measurements locally
+  localStorage.setItem('measurementData', JSON.stringify(measurementData));
+  
+  // Show success popup
+  document.getElementById('successPopup').style.display = 'flex';
+});
+
+function sendToSheets(data) {
+  fetch(SHEETDB_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: [data] })
+  }).catch(error => console.error('Error sending data:', error));
+}
+
+function goHome() {
+  // Clear order data
+  localStorage.removeItem('selectedProduct');
+  localStorage.removeItem('paymentData');
+  localStorage.removeItem('measurementData');
+  localStorage.removeItem('incompletePaymentForm');
+  
+  window.location.href = 'index.html';
+}
+
+function closePopup() {
+  document.getElementById('successPopup').style.display = 'none';
+}
+
+// Auto-save form data in case of network issues
+setInterval(function() {
+  const formData = {
+    shirt: document.getElementById('shirt').value,
+    trouser: document.getElementById('trouser').value,
+    hand: document.getElementById('hand').value,
+    neck: document.getElementById('neck').value,
+    shoulder: document.getElementById('shoulder').value,
+    fabricColor: document.getElementById('fabricColor').value,
+    description: document.getElementById('description').value
+  };
+  
+  if (Object.values(formData).some(value => value.trim() !== '')) {
+    localStorage.setItem('incompleteMeasurements', JSON.stringify(formData));
+  }
+}, 5000);
+
+// Restore form data if user returns
+window.addEventListener('load', function() {
+  const incomplete = localStorage.getItem('incompleteMeasurements');
+  if (incomplete) {
+    const data = JSON.parse(incomplete);
+    Object.keys(data).forEach(key => {
+      const element = document.getElementById(key);
+      if (element && data[key]) {
+        element.value = data[key];
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

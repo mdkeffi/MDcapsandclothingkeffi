@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Caps - Agbada Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f59e0b;
+}
+
+.main-container {
+  margin-top: 80px;
+  padding: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.product-card {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 1.5rem;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.buy-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #0f172a;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #cbd5e1;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #f59e0b;
+}
+
+.popup h3 {
+  color: #f59e0b;
+  margin-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.confirm-btn {
+  padding: 1rem 2rem;
+  margin: 0.5rem;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.yes-btn {
+  background: #22c55e;
+  color: white;
+}
+
+.no-btn {
+  background: #ef4444;
+  color: white;
+}
+
+.confirm-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.full-img-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 20000;
+  align-items: center;
+  justify-content: center;
+}
+
+.full-img-content {
+  max-width: 90%;
+  max-height: 90%;
+  position: relative;
+}
+
+.full-img-content img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.footer-message {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(30, 41, 59, 0.5);
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+.footer-message a {
+  color: #22c55e;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .main-container {
+    padding: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <i class="fas fa-arrow-left" onclick="goHome()" style="cursor: pointer; margin-right: 10px;"></i>
+      MD Agbada Collection
+    </div>
+    <div class="nav-links">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-container">
+  <div class="page-header">
+    <h1 class="page-title">MD Agbada Collection</h1>
+    <p class="page-subtitle">Premium Agbada (Babban Riga) designs that embody the rich heritage of Nigerian traditional wear with contemporary touches.</p>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+    <!-- Products will be loaded here -->
+  </div>
+
+  <div class="footer-message">
+    <p>Didn't find your preferred style? <a href="https://wa.me/2348149608006" target="_blank"><i class="fab fa-whatsapp"></i> Send us your custom design</a></p>
+  </div>
+</div>
+
+<!-- Buy Confirmation Popup -->
+<div id="buyPopup" class="popup">
+  <div class="popup-content">
+    <button class="close-btn" onclick="closeBuyPopup()"><i class="fas fa-times"></i></button>
+    <h3><i class="fas fa-crown"></i> Confirm Purchase</h3>
+    <p id="confirmText">Are you sure you want to buy this Agbada for ₦35,000?</p>
+    <button class="confirm-btn yes-btn" onclick="confirmPurchase()">
+      <i class="fas fa-check"></i> Yes, Buy Now
+    </button>
+    <button class="confirm-btn no-btn" onclick="closeBuyPopup()">
+      <i class="fas fa-times"></i> Cancel
+    </button>
+  </div>
+</div>
+
+<!-- Full Image Popup -->
+<div id="fullImgPopup" class="full-img-popup">
+  <div class="full-img-content">
+    <button class="close-btn" onclick="closeFullImg()" style="position: absolute; top: -40px; right: 0; color: white; font-size: 2rem; z-index: 1;">
+      <i class="fas fa-times"></i>
+    </button>
+    <img id="fullImg" src="" alt="Full size image">
+  </div>
+</div>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/2348149608006" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const SHEETDB_ENDPOINT = "https://sheetdb.io/api/v1/tl4p36fvtpr2f";
+const AGBADA_PRICE = 35000;
+
+// Product data - all Agbadas are ₦35,000
+const agbadaProducts = [
+  { name: "Royal Blue Agbada", image: "https://i.imgur.com/sI4O9jO.jpeg" },
+  { name: "Classic White Agbada", image: "https://i.imgur.com/di0GayQ.jpeg" },
+  { name: "Golden Brown Agbada", image: "https://i.imgur.com/mO0qA0N.jpeg" },
+  { name: "Elegant Black Agbada", image: "https://i.imgur.com/qMB38em.jpeg" },
+  { name: "Traditional Green Agbada", image: "https://i.imgur.com/MltE3Xz.jpeg" },
+  { name: "Premium Cream Agbada", image: "https://i.imgur.com/HP8KH5P.jpeg" },
+  { name: "Majestic Purple Agbada", image: "https://i.imgur.com/je0jf4H.jpeg" },
+  { name: "Noble Gray Agbada", image: "https://i.imgur.com/PTsXbMm.jpeg" },
+  { name: "Rich Burgundy Agbada", image: "https://i.imgur.com/D1i90CI.jpeg" },
+  { name: "Sophisticated Navy Agbada", image: "https://i.imgur.com/0moVcXI.jpeg" },
+  { name: "Luxurious Gold Agbada", image: "https://i.imgur.com/7p29ZrB.jpeg" },
+  { name: "Classic Ivory Agbada", image: "https://i.imgur.com/I77I5Ck.jpeg" },
+  { name: "Royal Maroon Agbada", image: "https://i.imgur.com/Y3OdlRt.jpeg" },
+  { name: "Premium Silver Agbada", image: "https://i.imgur.com/fAHk1pq.jpeg" },
+  { name: "Traditional Brown Agbada", image: "https://i.imgur.com/dHtWwiV.jpeg" },
+  { name: "Elegant Charcoal Agbada", image: "https://i.imgur.com/8wQbEyj.jpeg" },
+  { name: "Majestic Emerald Agbada", image: "https://i.imgur.com/RHAFkru.jpeg" },
+  { name: "Noble Beige Agbada", image: "https://i.imgur.com/TVoc0H7.jpeg" },
+  { name: "Sophisticated Teal Agbada", image: "https://i.imgur.com/FPJ8OYK.jpeg" },
+  { name: "Luxurious Olive Agbada", image: "https://i.imgur.com/Ej0XX5O.jpeg" }
+];
+
+let selectedProduct = null;
+
+// Load products
+function loadProducts() {
+  const productGrid = document.getElementById('productGrid');
+  productGrid.innerHTML = '';
+
+  agbadaProducts.forEach((product, index) => {
+    const productCard = document.createElement('div');
+    productCard.className = 'product-card';
+    
+    productCard.innerHTML = `
+      <img src="${product.image}" alt="${product.name}" class="product-image" onclick="openFullImg('${product.image}')">
+      <div class="product-info">
+        <div class="product-price">₦${AGBADA_PRICE.toLocaleString()}</div>
+        <button class="buy-btn" onclick="openBuyPopup(${index})">
+          <i class="fas fa-shopping-cart"></i> Buy Now
+        </button>
+      </div>
+    `;
+    
+    productGrid.appendChild(productCard);
+  });
+}
+
+function openBuyPopup(productIndex) {
+  selectedProduct = agbadaProducts[productIndex];
+  document.getElementById('confirmText').textContent = `Are you sure you want to buy ${selectedProduct.name} for ₦${AGBADA_PRICE.toLocaleString()}?`;
+  document.getElementById('buyPopup').style.display = 'flex';
+  
+  // Track event
+  sendToSheets({
+    event_type: 'agbada_interest',
+    customer_name: localStorage.getItem('customerName') || 'Guest',
+    product_name: selectedProduct.name,
+    product_image: selectedProduct.image,
+    price: AGBADA_PRICE,
+    timestamp: new Date().toISOString()
+  });
+}
+
+function closeBuyPopup() {
+  document.getElementById('buyPopup').style.display = 'none';
+}
+
+function confirmPurchase() {
+  if (!selectedProduct) return;
+  
+  // Store selection
+  const orderData = {
+    productName: selectedProduct.name,
+    productImage: selectedProduct.image,
+    price: AGBADA_PRICE,
+    customerName: localStorage.getItem('customerName') || 'Guest',
+    timestamp: new Date().toISOString(),
+    type: 'agbada'
+  };
+  
+  localStorage.setItem('selectedProduct', JSON.stringify(orderData));
+  
+  // Track selection
+  sendToSheets({
+    event_type: 'agbada_selected',
+    customer_name: orderData.customerName,
+    product_name: selectedProduct.name,
+    price: AGBADA_PRICE,
+    timestamp: new Date().toISOString()
+  });
+  
+  // Redirect to payment
+  window.location.href = `payment.html?product=${encodeURIComponent(selectedProduct.name)}&image=${encodeURIComponent(selectedProduct.image)}&price=${AGBADA_PRICE}&type=agbada`;
+}
+
+function openFullImg(imageSrc) {
+  document.getElementById('fullImg').src = imageSrc;
+  document.getElementById('fullImgPopup').style.display = 'flex';
+}
+
+function closeFullImg() {
+  document.getElementById('fullImgPopup').style.display = 'none';
+}
+
+function goHome() {
+  window.location.href = 'index.html';
+}
+
+function sendToSheets(data) {
+  fetch(SHEETDB_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: [data] })
+  }).catch(error => console.error('Error sending data:', error));
+}
+
+// Initialize page
+window.addEventListener('load', function() {
+  loadProducts();
+  
+  // Track page visit
+  sendToSheets({
+    event_type: 'page_visit',
+    customer_name: localStorage.getItem('customerName') || 'Guest',
+    page: 'design2.html',
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Close popups when clicking outside
+window.addEventListener('click', function(e) {
+  if (e.target === document.getElementById('buyPopup')) {
+    closeBuyPopup();
+  }
+  if (e.target === document.getElementById('fullImgPopup')) {
+    closeFullImg();
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Caps and Clothing Keffi - Premium Nigerian Fashion</title>
+<meta name="description" content="Quality Kaptans, Agbadas, and Traditional Nigerian Clothing in Keffi, Nasarawa State. Custom-made premium fashion celebrating tradition and modern style." />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  color: #f8fafc;
+  min-height: 100vh;
+}
+
+.navbar {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f59e0b;
+}
+
+.hero {
+  margin-top: 80px;
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.9)), url('https://i.imgur.com/72prNqt.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #cbd5e1;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #0f172a;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #f8fafc;
+  border: 2px solid #f59e0b;
+}
+
+.btn-secondary:hover {
+  background: #f59e0b;
+  color: #0f172a;
+}
+
+.collections {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #f59e0b;
+  margin-bottom: 3rem;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.collection-card {
+  background: rgba(30, 41, 59, 0.8);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.collection-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.collection-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.collection-card:hover .collection-image {
+  transform: scale(1.05);
+}
+
+.collection-info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.collection-info h3 {
+  font-size: 1.5rem;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+.collection-info p {
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.about-ceo {
+  background: rgba(30, 41, 59, 0.5);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.ceo-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.ceo-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 2rem;
+  border: 4px solid #f59e0b;
+}
+
+.ceo-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #f59e0b;
+  margin-bottom: 1rem;
+}
+
+.ceo-info h3 {
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+}
+
+.ceo-info p {
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.contact-ceo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #22c55e;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-ceo:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+}
+
+.footer {
+  background: #0f172a;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25d366;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.popup h2 {
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.popup input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.8);
+  color: #f8fafc;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.popup input:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 0 1rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Welcome Popup -->
+<div id="welcomePopup" class="popup">
+  <div class="popup-content">
+    <h2><i class="fas fa-user-circle"></i> Welcome!</h2>
+    <p>Please enter your name to continue:</p>
+    <input type="text" id="customerName" placeholder="Your full name" maxlength="50">
+    <button class="btn btn-primary" onclick="submitName()">
+      <i class="fas fa-arrow-right"></i> Continue
+    </button>
+  </div>
+</div>
+
+<!-- Info Popup -->
+<div id="infoPopup" class="popup">
+  <div class="popup-content">
+    <h2><i class="fas fa-store"></i> MD Caps and Clothing Keffi</h2>
+    <p>This is the official website of MD Caps and Clothing Keffi</p>
+    <button class="btn btn-primary" onclick="closeInfoPopup()">
+      <i class="fas fa-check"></i> Continue Shopping
+    </button>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <img src="https://i.imgur.com/ShFIWdI.png" alt="MD Logo">
+      <span>MD Caps</span>
+    </div>
+    <div class="nav-links">
+      <a href="#home"><i class="fas fa-home"></i> Home</a>
+      <a href="#collections"><i class="fas fa-tshirt"></i> Collections</a>
+      <a href="#ceo"><i class="fas fa-user-tie"></i> About CEO</a>
+      <a href="tel:08149608006"><i class="fas fa-phone"></i> Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h1>Premium Caps & Traditional Clothing</h1>
+    <p>Discover our exquisite collection of traditional Nigerian fashion. From elegant Kaptans to stunning Agbadas, we create premium clothing that celebrates both tradition and modern style.</p>
+    <div class="cta-buttons">
+      <a href="design.html" class="btn btn-primary">
+        <i class="fas fa-shopping-bag"></i> Shop Kaptans
+      </a>
+      <a href="design2.html" class="btn btn-secondary">
+        <i class="fas fa-crown"></i> Shop Agbadas
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Collections Section -->
+<section id="collections" class="collections">
+  <h2 class="section-title">Our Premium Collections</h2>
+  <div class="collection-grid">
+    <div class="collection-card">
+      <img src="https://i.imgur.com/72prNqt.jpeg" alt="Kaptan Collection" class="collection-image">
+      <div class="collection-info">
+        <h3>Kaptan Collection</h3>
+        <p>Traditional and modern designs crafted with premium fabrics. Perfect for special occasions and everyday elegance.</p>
+        <a href="design.html" class="btn btn-primary">
+          <i class="fas fa-eye"></i> View Collection
+        </a>
+      </div>
+    </div>
+    <div class="collection-card">
+      <img src="https://i.imgur.com/qMB38em.jpeg" alt="Agbada Collection" class="collection-image">
+      <div class="collection-info">
+        <h3>Agbada Collection</h3>
+        <p>Majestic Agbadas (Babban Riga) that embody the rich heritage of Nigerian traditional wear with contemporary touches.</p>
+        <a href="design2.html" class="btn btn-primary">
+          <i class="fas fa-eye"></i> View Collection
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About CEO Section -->
+<section id="ceo" class="about-ceo">
+  <div class="ceo-container">
+    <img src="https://i.imgur.com/QCBXm5d.jpeg" alt="Muhammad Muhammad - CEO" class="ceo-image">
+    <div class="ceo-info">
+      <h2>About the CEO</h2>
+      <h3>Muhammad Muhammad</h3>
+      <p>Muhammad Muhammad, the CEO of MD Caps and Clothing Keffi, is dedicated to creating stylish, high-quality clothing that celebrates both tradition and modern fashion. With a focus on innovation and customer satisfaction, he strives to make every client look and feel their best.</p>
+      <a href="tel:08149608006" class="contact-ceo">
+        <i class="fas fa-phone"></i> Contact CEO: 08149608006
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2025 MD Caps and Clothing Keffi. All rights reserved.</p>
+  <p>📍 Keffi, Nasarawa State, Nigeria</p>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/2348149608006" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+const SHEETDB_ENDPOINT = "https://sheetdb.io/api/v1/tl4p36fvtpr2f";
+
+// Show welcome popup on page load
+window.addEventListener('load', function() {
+  const storedName = localStorage.getItem('customerName');
+  if (!storedName) {
+    document.getElementById('welcomePopup').style.display = 'flex';
+  }
+});
+
+function submitName() {
+  const nameInput = document.getElementById('customerName');
+  const name = nameInput.value.trim();
+  
+  if (name.length < 2) {
+    alert('Please enter a valid name (at least 2 characters)');
+    return;
+  }
+  
+  // Store name locally
+  localStorage.setItem('customerName', name);
+  
+  // Send to Google Sheets
+  sendToSheets({
+    event_type: 'customer_registration',
+    customer_name: name,
+    timestamp: new Date().toISOString(),
+    page: 'index.html'
+  });
+  
+  // Close welcome popup and show info popup
+  document.getElementById('welcomePopup').style.display = 'none';
+  document.getElementById('infoPopup').style.display = 'flex';
+}
+
+function closeInfoPopup() {
+  document.getElementById('infoPopup').style.display = 'none';
+}
+
+function sendToSheets(data) {
+  fetch(SHEETDB_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ data: [data] })
+  }).catch(error => console.error('Error sending data:', error));
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+// Track page visits
+window.addEventListener('load', function() {
+  const customerName = localStorage.getItem('customerName') || 'Guest';
+  sendToSheets({
+    event_type: 'page_visit',
+    customer_name: customerName,
+    page: 'index.html',
+    timestamp: new Date().toISOString()
+  });
+});
+</script>
+
+</body>
+</html>
